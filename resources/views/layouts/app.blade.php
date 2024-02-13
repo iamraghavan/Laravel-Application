@@ -42,6 +42,18 @@
     <script src="{{ asset("/assets/extensions/apexcharts/apexcharts.min.js") }}"></script>
     <script src="{{ asset("/assets/static/js/pages/dashboard.js") }}"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Assuming you returned the user info from the controller
+        var userInfo = {!! json_encode(session('user_info')) !!};
+
+        // Store user info in local storage
+        localStorage.setItem('user_info', JSON.stringify(userInfo));
+    });
+</script>
+
+
 </body>
 
 </html>

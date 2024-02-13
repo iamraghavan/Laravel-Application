@@ -11,6 +11,7 @@ Here is your login verification code:
 </div>
 
 Please make sure you never share this code with anyone.
+<br>
 **Note:**  The code will expire in 15 minutes.
 
 

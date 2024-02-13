@@ -11,16 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class OtpController extends Controller
 {
 
-    public function __construct()
-    {
-        // Apply the AuthenticateRole middleware to specific methods
-        // $this->middleware('web', ['only' => ['admin']]);
-    }
-    public function admin()
-    {
-        return view('admin.admin_dashboard');
-    }
-
+  
 
 
     public function showVerificationForm()
@@ -92,6 +83,8 @@ class OtpController extends Controller
                 'role' => $user->role,
             ];
             $request->session()->put('user_info', $userInfo);
+            
+            // $request->response()->json(['user_info' => $userInfo]);
 
             // Redirect to the desired URL after successful OTP verification
             $redirectUrl = $this->redirectBasedOnRole($user);

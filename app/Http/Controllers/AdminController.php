@@ -8,17 +8,32 @@ use Illuminate\Validation\ValidationException;
 
 use App\Mail\UserRegistrationMail;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.admin_dashboard');
+        if (Auth::check() && Auth::user()->role === 'admin') {
+   
+            return view('admin.admin_dashboard');
+        }
+
+        return abort(403, 'Unauthorized');
+        
     }
 
-    public function new_user(){
-        return view('admin.new_user');
+    public function new_user()
+    {
+        // Check if the user is authenticated and has the 'admin' role
+        if (Auth::check() && Auth::user()->role === 'admin') {
+           return view('admin.new_user');
+        }
+
+        // User is not authenticated or doesn't have the 'admin' role
+        return abort(403, 'Unauthorized');
     }
+
+ 
 
 
     
